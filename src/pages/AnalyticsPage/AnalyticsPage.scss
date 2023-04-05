@@ -1,0 +1,79 @@
+.input__wrapper {
+    width: 100%;
+    position: relative;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.input__file {
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+}
+
+.input__file-icon-wrapper {
+    display: flex;
+    margin: 0 20px;
+}
+
+.input__file-button-text {
+    line-height: 1;
+    margin-top: 1px;
+}
+
+.input__file-button {
+    color: #B1B2B3;
+    font-size: 1.125rem;
+    font-weight: 700;
+    display: flex;
+    margin: auto 0;
+    cursor: pointer;
+}
+
+.files {
+    margin-left: 20px;
+    margin-top: 30px;
+
+    &__item {
+        position: relative;
+        width: 500px;
+        height: 50px;
+        display: flex;
+
+        &-icon {
+            width: 24px;
+            height: 24px;
+            margin: auto 0;
+            margin-right: 16px;
+        }
+
+        &-text {
+            font-size: 16px;
+            margin: auto 0;
+        }
+
+        &-delete {
+            width: 22px;
+            height: 22px;
+            margin: auto 0;
+            margin-left: auto;
+            cursor: pointer;
+        }
+
+        &::after {
+            background: #B1B2B3;
+            position: absolute;
+            content: '';
+            height: 1px;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+
+        &:last-child {
+            &::after {
+                height: 0;
+            }
+        }
+    }
+}

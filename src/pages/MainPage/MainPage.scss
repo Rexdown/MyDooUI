@@ -1,0 +1,24 @@
+.MainPage {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: calc(100vh - 125px);
+
+    &__body {
+        display: flex;
+        justify-content: space-between;
+        width: 100vw;
+
+        &__tasklist {
+            width: 45%;
+        }
+    }
+}
+
+.activeDay {
+    background-color: #FF7415;
+
+    & p {
+        color: #fff;
+    }
+}

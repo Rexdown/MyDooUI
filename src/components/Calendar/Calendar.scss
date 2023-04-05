@@ -1,0 +1,149 @@
+.calendarConteiner {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.calendar {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 85%;
+
+    &__day {
+        display: flex;
+        flex-direction: column;
+        z-index: 5;
+        width: 13.5%;
+        height: 90px;
+        cursor: pointer;
+        margin-right: 15px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        border: 2px solid #FF7415;
+        background-color: #F3F3F3;
+
+        &__content {
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+
+        &-number {
+            font-weight: 700;
+            font-size: 22px;
+            margin: 0 auto;
+        }
+        &-month {
+            font-weight: 500;
+            font-size: 17px;
+            margin: 0 auto;
+        }
+        &-today {
+            font-weight: 400;
+            font-size: 17px;
+            margin: 0 auto;
+        }
+    }
+
+    &__actionsWrapper {
+        position: absolute;
+        display: flex;
+        width: 45vw;
+        bottom: 40px;
+        left: 0;
+    }
+
+    &__actions {
+        display: flex;
+        margin-left: auto;
+        margin-top: 20px;
+
+        &__prev {
+            margin-right: 10px;
+            display: flex;
+
+            &-text {
+                font-size: 18px;
+                font-weight: 500;
+                margin: auto 0;
+                margin-right: 10px;
+            }
+
+            &-btn {
+                width: 25px;
+                height: 30px;
+                border: 2px solid #FF7415;
+                border-radius: 7px;
+                margin: auto 0;
+                cursor: pointer;
+
+                background-image: url('../../assets/icons/Arrow_black.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+                transform: rotate(180deg);
+                background-size: 80%;
+                transition: 0.2s all;
+
+                &:hover {
+                    background-color: #FF7415;
+                    background-image: url('../../assets/icons/Arrow_white.svg');
+                    transition: 0.2s all;
+                }
+            }
+        }
+        &__next {
+            margin-left: 10px;
+            display: flex;
+
+            &-text {
+                font-size: 18px;
+                font-weight: 500;
+                margin: auto 0;
+                margin-left: 10px;
+            }
+
+            &-btn {
+                width: 25px;
+                height: 30px;
+                border: 2px solid #FF7415;
+                border-radius: 7px;
+                margin: auto 0;
+                cursor: pointer;
+
+                background-image: url('../../assets/icons/Arrow_black.svg');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 80%;
+                transition: 0.2s all;
+
+                &:hover {
+                    background-color: #FF7415;
+                    background-image: url('../../assets/icons/Arrow_white.svg');
+                    transition: 0.2s all;
+                }
+            }
+        }
+
+        &__info {
+            display: flex;
+            flex-direction: column;
+
+            &-month {
+                margin: 0 auto;
+            }
+            &-year {
+                margin: 0 auto;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+.activeDay {
+    background-color: #FF7415;
+
+    & p {
+        color: #fff;
+    }
+}
