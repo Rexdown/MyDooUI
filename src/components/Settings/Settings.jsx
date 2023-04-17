@@ -11,14 +11,22 @@ const Settings = ({ activeSettings, setActiveSettings }) => {
   const [_languageState, setLanguageState] = useRecoilState(languageState);
   const [_debtCountState, setDebtCountState] = useRecoilState(debtState);
 
-  function onCkickHandler() {
+  function settingsClickHandler() {
     setActiveSettings((prev) => !prev);
+  }
+
+  const languageClickHandler = (item) => () => {
+    setLanguageState(item);
+  }
+
+  const debtClickHandler = (item) => () => {
+    setDebtCountState(item);
   }
 
   return (
     <div 
       className={`settings ${activeSettings ? 'active__settings' : ''}`}
-      onClick={() => setActiveSettings(false)}
+      onClick={settingsClickHandler}
     >
       <div 
         className={`settings__body ${activeSettings ? 'active__settings-body' : ''}`}
@@ -38,7 +46,7 @@ const Settings = ({ activeSettings, setActiveSettings }) => {
           />
           <div 
             className="settings__body__title-close" 
-            onClick={onCkickHandler}
+            onClick={settingsClickHandler}
           />
         </div>
 
@@ -55,7 +63,7 @@ const Settings = ({ activeSettings, setActiveSettings }) => {
             </p>
             <div className="settings__body__select-options">
               {languages.filter((item) => item.id !== _languageState.id).map((item) => (
-                <div onClick={() => setLanguageState(item)}>
+                <div onClick={languageClickHandler(item)}>
                   <p>{item.name}</p>
                 </div>
               ))}
@@ -79,7 +87,7 @@ const Settings = ({ activeSettings, setActiveSettings }) => {
             </p>
             <div className="settings__body__select-options">
               {debtTypes.filter((item) => item.id !== _debtCountState.id).map((item) => (
-                <div onClick={() => setDebtCountState(item)}>
+                <div onClick={debtClickHandler(item)}>
                   <p>
                     {_languageState.name === 'Русский'
                       ? item.nameRu

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-extend-native */
 import React, { useState, useEffect } from 'react'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilValue, useRecoilState } from 'recoil'
 
 import { MonthList } from '../../constants'
 import { languageState, selectDateState } from '../../state'
@@ -33,7 +33,7 @@ const daysInMonth = (month, year, language) => {
 
 const Calendar = () => {
   const language = useRecoilValue(languageState).name;
-  const setSelectDate = useSetRecoilState(selectDateState)
+  const [_selectDate, setSelectDate] = useRecoilState(selectDateState);
 
   const [year, setYear] = useState(new Date().getFullYear());
   const [month, setMonth] = useState(new Date().getMonth());
@@ -53,7 +53,12 @@ const Calendar = () => {
   const chengeMonth = (month) => {
     const tempMonth = month > 11 ? 0 : month < 0 ? 11 : month;
     
-    setActiveDay(0)
+    if (month !== _selectDate.getMonth()) {
+      setActiveDay(0)
+    } else {
+      setActiveDay(_selectDate.getDate())
+    }
+
     setMonth(tempMonth)
   }
 
@@ -65,6 +70,10 @@ const Calendar = () => {
     }
   }
 
+  const dayClichHandler = (dayNum) => () => {
+    setActiveDay(dayNum)
+  }
+
   return (
     <div className="calendarConteiner">
       <div className="calendar">
@@ -72,7 +81,7 @@ const Calendar = () => {
           <div 
             key={day.number}
             className={`calendar__day ${activeDay === day.number ? 'activeDay' : ''}`}
-            onClick={() => setActiveDay(day.number)}
+            onClick={dayClichHandler(day.number)}
           >
             <div className="calendar__day__content">
               <p className="calendar__day-number">

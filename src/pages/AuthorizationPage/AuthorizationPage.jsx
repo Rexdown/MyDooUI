@@ -14,6 +14,14 @@ const AuthorizationPage = () => {
     setActiveBtn(login && password)
   }, [login, password]);
 
+  const loginInputHandler = (e) => {
+    setLogin(e.target.value)
+  }
+
+  const passwordInputHandler = (e) => {
+    setPassword(e.target.value)
+  }
+
   return (
     <div className="AuthorizationPage">
       <div className="AuthorizationPage__form">
@@ -21,13 +29,13 @@ const AuthorizationPage = () => {
           type="text" 
           className="AuthorizationPage__form__input" 
           placeholder='E-mail'
-          onInput={(e) => setLogin(e.target.value)}
+          onInput={loginInputHandler}
         />
         <input 
           type="text"
           className="AuthorizationPage__form__input" 
           placeholder='Пароль'
-          onInput={(e) => setPassword(e.target.value)}
+          onInput={passwordInputHandler}
         />
         <Link 
           className={`AuthorizationPage__form__btn ${activeBtn ? 'activeBtn' : ''}`}

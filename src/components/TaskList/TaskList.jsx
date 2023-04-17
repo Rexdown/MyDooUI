@@ -78,7 +78,7 @@ const TaskList = () => {
     }
   }
 
-  const changeImportant = (item) => {
+  const changeImportant = (item) => () => {
     const tempArr = [];
     taskList.forEach((task) => {
       if (task.id === item.id) {
@@ -122,6 +122,10 @@ const TaskList = () => {
 
   const deleteTask = () => {
     setTaskList(taskList.filter((task) => task.id !== selectedTask.id))
+  }
+
+  const sortTypeClickHandler = (type) => () => {
+    setSelectSortType(type);
   }
 
   return (
@@ -191,7 +195,7 @@ const TaskList = () => {
               </div>
               <button 
                 className="TaskList__addPanel-btn"
-                onClick={() => сancelAddTask()}
+                onClick={сancelAddTask}
               >
                 {language === 'Русский'
                   ? 'Отменить'
@@ -200,7 +204,7 @@ const TaskList = () => {
               </button>
               <button
                 className="TaskList__addPanel-btn"
-                onClick={() => addTask()}
+                onClick={addTask}
               >
                 {language === 'Русский'
                   ? 'Сохранить'
@@ -250,12 +254,12 @@ const TaskList = () => {
               }
               <div className="TaskList__actions__select__options">
                   {taskTypesArr.filter((item) => item.type !== selectSortType).map((item) => (
-                    <div onClick={() => setSelectSortType(item.type)}>
+                    <div onClick={sortTypeClickHandler(item.type)}>
                       <img src={item.icon} alt="icon" />
                     </div>
                   ))}
                   {selectSortType !== 'All'
-                    ? <div onClick={() => setSelectSortType('All')}> 
+                    ? <div onClick={sortTypeClickHandler('All')}> 
                         <p>All</p>
                       </div>
                     : ''
@@ -283,13 +287,13 @@ const TaskList = () => {
                   src={fire_orange} 
                   alt="fire" 
                   className="TaskList__item-info-important"
-                  onClick={() => changeImportant(item)}
+                  onClick={changeImportant(item)}
                 />
               : <img 
                   src={fire_grey} 
                   alt="fire" 
                   className="TaskList__item-info-important"
-                  onClick={() => changeImportant(item)}
+                  onClick={changeImportant(item)}
                 />
             }
           </div>
@@ -314,13 +318,13 @@ const TaskList = () => {
                       src={fire_orange} 
                       alt="fire" 
                       className="TaskList__item-info-important"
-                      onClick={() => changeImportant(item)}
+                      onClick={changeImportant(item)}
                     />
                   : <img 
                       src={fire_grey} 
                       alt="fire" 
                       className="TaskList__item-info-important"
-                      onClick={() => changeImportant(item)}
+                      onClick={changeImportant(item)}
                     />
                 }
               </div>

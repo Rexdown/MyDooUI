@@ -8,9 +8,21 @@ import settings from '../../assets/icons/settings.svg'
 import './Header.scss'
 
 const Header = ({ setActiveSettings }) => {
+  function settingsClickHandler() {
+    setActiveSettings((prev) => !prev);
+  }
+
   return (
     <div className="header">
-        <img src={logo} alt="logo" className='header__logo' />
+        <Link 
+          to="/main"
+        >
+          <img 
+            src={logo} 
+            alt="logo" 
+            className='header__logo' 
+          />
+        </Link>
 
         <div className="header__actions">
             <Link 
@@ -26,7 +38,7 @@ const Header = ({ setActiveSettings }) => {
               src={settings} 
               alt="settings" 
               className="header__actions-settings" 
-              onClick={() => setActiveSettings(true)}
+              onClick={settingsClickHandler}
             />
         </div>
     </div>

@@ -1,3 +1,7 @@
+.AnalyticsPage {
+    margin-left: 50px;
+}
+
 .input__wrapper {
     width: 100%;
     position: relative;
@@ -9,25 +13,25 @@
     opacity: 0;
     visibility: hidden;
     position: absolute;
-}
 
-.input__file-icon-wrapper {
-    display: flex;
-    margin: 0 20px;
-}
+    &-icon-wrapper {
+        display: flex;
+        margin: 0 20px;
+    }
 
-.input__file-button-text {
-    line-height: 1;
-    margin-top: 1px;
-}
+    &-button {
+        color: #B1B2B3;
+        font-size: 1.125rem;
+        font-weight: 700;
+        display: flex;
+        margin: auto 0;
+        cursor: pointer;
 
-.input__file-button {
-    color: #B1B2B3;
-    font-size: 1.125rem;
-    font-weight: 700;
-    display: flex;
-    margin: auto 0;
-    cursor: pointer;
+        &-text {
+            line-height: 1;
+            margin-top: 1px;
+        }
+    }
 }
 
 .files {
